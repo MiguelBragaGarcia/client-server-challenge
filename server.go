@@ -30,6 +30,12 @@ type QuotationResult struct {
 }
 
 func main() {
+
+	http.HandleFunc("/cotacao", quotationHandler)
+	http.ListenAndServe(":8080", nil)
+}
+
+func quotationHandler(response http.ResponseWriter, request *http.Request) {
 	ctx := context.Background()
 	quotationCtx, cancel := context.WithTimeout(ctx, 200*time.Second)
 
@@ -50,6 +56,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	json.NewEncoder(response).Encode(data)
 }
 
 func getDolarQuotation(quotationCtx context.Context) (QuotationResult, error) {
