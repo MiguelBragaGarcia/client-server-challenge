@@ -1,4 +1,4 @@
-# Go expert challenge Clint-Server-Api
+# Go expert challenge Client-Server-Api
 A project to proxy and save dolar quotation information from a external api to his consumers. 
 
 # Objectives
